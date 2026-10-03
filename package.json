@@ -5,30 +5,30 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -n api,web -c blue,green \"pnpm dev:api\" \"pnpm dev:web\"",
-    "dev:api": "dotnet watch run --project apps/api/src/DocumentSignaturePortal.Api",
+    "dev:api": "dotnet watch run --project apps/api/src/Api",
     "dev:web": "pnpm --filter @repo/web dev",
 
-    "gen:spec": "dotnet build apps/api/src/DocumentSignaturePortal.Api -c Debug",
+    "gen:spec": "dotnet build apps/api/src/Api -c Debug",
     "gen:types": "pnpm --filter @repo/api-client generate",
     "gen": "pnpm gen:spec && pnpm gen:types",
     "gen:check": "pnpm gen && git diff --exit-code -- apps/api/openapi.json packages/api-client/src",
 
     "build": "pnpm build:api && pnpm gen:types && pnpm build:web",
-    "build:api": "dotnet build DocumentSignaturePortal.slnx -c Release",
+    "build:api": "dotnet build DocSign.slnx -c Release",
     "build:web": "pnpm --filter @repo/web build",
 
     "test": "pnpm test:api && pnpm test:web",
-    "test:api": "dotnet test DocumentSignaturePortal.slnx",
+    "test:api": "dotnet test DocSign.slnx",
     "test:web": "pnpm --filter @repo/web test",
 
-    "lint": "pnpm --filter @repo/web lint && dotnet format DocumentSignaturePortal.slnx --verify-no-changes",
-    "format": "dotnet format DocumentSignaturePortal.slnx && pnpm --filter @repo/web format",
+    "lint": "pnpm --filter @repo/web lint && dotnet format DocSign.slnx --verify-no-changes",
+    "format": "dotnet format DocSign.slnx && pnpm --filter @repo/web format",
     "typecheck": "pnpm --filter @repo/web typecheck",
 
-    "db:migrate": "dotnet ef database update --project apps/api/src/DocumentSignaturePortal.Infrastructure --startup-project apps/api/src/DocumentSignaturePortal.Api",
-    "db:add": "dotnet ef migrations add --project apps/api/src/DocumentSignaturePortal.Infrastructure --startup-project apps/api/src/DocumentSignaturePortal.Api",
+    "db:migrate": "dotnet ef database update --project apps/api/src/Infrastructure --startup-project apps/api/src/Api",
+    "db:add": "dotnet ef migrations add --project apps/api/src/Infrastructure --startup-project apps/api/src/Api",
 
-    "clean": "dotnet clean DocumentSignaturePortal.slnx && pnpm -r exec rimraf dist node_modules/.vite"
+    "clean": "dotnet clean DocSign.slnx && pnpm -r exec rimraf dist node_modules/.vite"
   },
   "devEngines": {
     "packageManager": {
