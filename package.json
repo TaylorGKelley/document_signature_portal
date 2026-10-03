@@ -1,14 +1,35 @@
 {
   "name": "document_signature_portal",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "license": "GNU AFFERO GENERAL PUBLIC LICENSE",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently -n api,web -c blue,green \"pnpm dev:api\" \"pnpm dev:web\"",
+    "dev:api": "dotnet watch run --project apps/api/src/DocSign.Api",
+    "dev:web": "pnpm --filter @repo/web dev",
+
+    "gen:spec": "dotnet build apps/api/src/DocSign.Api -c Debug",
+    "gen:types": "pnpm --filter @repo/api-client generate",
+    "gen": "pnpm gen:spec && pnpm gen:types",
+    "gen:check": "pnpm gen && git diff --exit-code -- apps/api/openapi.json packages/api-client/src",
+
+    "build": "pnpm build:api && pnpm gen:types && pnpm build:web",
+    "build:api": "dotnet build DocSign.slnx -c Release",
+    "build:web": "pnpm --filter @repo/web build",
+
+    "test": "pnpm test:api && pnpm test:web",
+    "test:api": "dotnet test DocSign.slnx",
+    "test:web": "pnpm --filter @repo/web test",
+
+    "lint": "pnpm --filter @repo/web lint && dotnet format DocSign.slnx --verify-no-changes",
+    "format": "dotnet format DocSign.slnx && pnpm --filter @repo/web format",
+    "typecheck": "pnpm --filter @repo/web typecheck",
+
+    "db:migrate": "dotnet ef database update --project apps/api/src/DocSign.Infrastructure --startup-project apps/api/src/DocSign.Api",
+    "db:add": "dotnet ef migrations add --project apps/api/src/DocSign.Infrastructure --startup-project apps/api/src/DocSign.Api",
+
+    "clean": "dotnet clean DocSign.slnx && pnpm -r exec rimraf dist node_modules/.vite"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
@@ -16,5 +37,8 @@
       "onFail": "download"
     }
   },
-  "type": "module"
+  "devDependencies": {
+    "concurrently": "^10.0.5",
+    "rimraf": "^6.1.3"
+  }
 }
