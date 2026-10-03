@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\DocumentSignaturePortal.Infrastructure.csproj" />
-    <ProjectReference Include="..\Application\DocumentSignaturePortal.Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\DocSign.Infrastructure.csproj" />
+    <ProjectReference Include="..\Application\DocSign.Application.csproj" />
   </ItemGroup>
 
 </Project>

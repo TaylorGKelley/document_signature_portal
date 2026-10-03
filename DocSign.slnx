@@ -1,0 +1,30 @@
+<Solution>
+  <Folder Name="/apps/" />
+  <Folder Name="/apps/api/" />
+  <Folder Name="/apps/api/src/" />
+  <Folder Name="/apps/api/src/Api/">
+    <Project Path="apps/api/src/Api/DocSign.Api.csproj" />
+  </Folder>
+  <Folder Name="/apps/api/src/Application/">
+    <Project Path="apps/api/src/Application/DocSign.Application.csproj" />
+  </Folder>
+  <Folder Name="/apps/api/src/Domain/">
+    <Project Path="apps/api/src/Domain/DocSign.Domain.csproj" />
+  </Folder>
+  <Folder Name="/apps/api/src/Infrastructure/">
+    <Project Path="apps/api/src/Infrastructure/DocSign.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/apps/api/tests/" />
+  <Folder Name="/apps/api/tests/Application.Tests/">
+    <Project Path="apps/api/tests/Application.Tests/DocSign.Application.Tests.csproj" />
+  </Folder>
+  <Folder Name="/apps/api/tests/Architecture.Tests/">
+    <Project Path="apps/api/tests/Architecture.Tests/DocSign.Architecture.Tests.csproj" />
+  </Folder>
+  <Folder Name="/apps/api/tests/Domain.Tests/">
+    <Project Path="apps/api/tests/Domain.Tests/DocSign.Domain.Tests.csproj" />
+  </Folder>
+  <Folder Name="/apps/api/tests/Infrastructure.Tests/">
+    <Project Path="apps/api/tests/Infrastructure.Tests/DocSign.Infrastructure.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Domain\DocumentSignaturePortal.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Domain\DocSign.Domain.csproj" />
   </ItemGroup>
 
 </Project>

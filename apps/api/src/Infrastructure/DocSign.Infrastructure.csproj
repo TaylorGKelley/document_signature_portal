@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\DocumentSignaturePortal.Domain.csproj" />
+    <ProjectReference Include="DocSign.Application.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
