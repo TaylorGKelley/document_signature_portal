@@ -1,4 +1,3 @@
-
 namespace DocumentSignaturePortal.Api;
 
 public class Program
@@ -7,10 +6,14 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        builder.Configuration
+                .AddEnvironmentVariables()
+                .AddCommandLine(args).Build();
+
         // Add services to the container.
 
         builder.Services.AddControllers();
-        // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
         builder.Services.AddOpenApi();
 
         var app = builder.Build();

@@ -4,9 +4,10 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StaticWebAssetsEnabled>false</StaticWebAssetsEnabled>
 
-    <OpenApiGenerateDocuemntsOnBuild>true</OpenApiGenerateDocuemntsOnBuild>
-    <OpenApiDocumentsDirectory>$(SolutionDir)/</OpenApiDocumentsDirectory>
+    <OpenApiGenerateDocumentsOnBuild>true</OpenApiGenerateDocumentsOnBuild>
+    <OpenApiDocumentsDirectory>$(SolutionDir)</OpenApiDocumentsDirectory>
     <OpenApiGenerateDocumentsOptions>--file-name openapi</OpenApiGenerateDocumentsOptions>
   </PropertyGroup>
 
@@ -19,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\DocSign.Infrastructure.csproj" />
-    <ProjectReference Include="..\Application\DocSign.Application.csproj" />
+    <ProjectReference Include="../Infrastructure/DocSign.Infrastructure.csproj" />
+    <ProjectReference Include="../Application/DocSign.Application.csproj" />
   </ItemGroup>
 
 </Project>

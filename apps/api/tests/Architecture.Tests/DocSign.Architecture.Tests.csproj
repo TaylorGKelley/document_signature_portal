@@ -20,10 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Domain\DocSign.Domain.csproj" />
-    <ProjectReference Include="..\..\src\Application\DocSign.Application.csproj" />
-    <ProjectReference Include="..\..\src\Infrastructure\DocSign.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\src\Api\DocSign.Api.csproj" />
+    <ProjectReference Include="../../src/Domain/DocSign.Domain.csproj" />
+    <ProjectReference Include="../../src/Application/DocSign.Application.csproj" />
+    <ProjectReference Include="../../src/Infrastructure/DocSign.Infrastructure.csproj" />
+    <ProjectReference Include="../../src/Api/DocSign.Api.csproj" />
   </ItemGroup>
 
 </Project>

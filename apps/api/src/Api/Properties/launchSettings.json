@@ -8,7 +8,7 @@
       "applicationUrl": "http://localhost:3100",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
+      }
     }
   }
 }
