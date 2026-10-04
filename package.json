@@ -9,7 +9,7 @@
     "infra:logs": "docker compose logs -f",
     "infra:reset": "docker compose down -v",
 
-    "dev:all": "pnpm infra:up && pnpm dev",
+    "dev:full": "pnpm infra:up && sh -c 'trap \"pnpm infra:down\" EXIT INT TERM; pnpm dev'",
     "dev": "concurrently -n api,web -c blue,green \"pnpm dev:api\" \"pnpm dev:web\"",
     "dev:api": "dotnet watch --solution DocSign.sln run --project apps/api/src/Api /p:SolutionDir=$PWD/",
     "dev:web": "pnpm --filter @repo/web dev",
