@@ -1,5 +1,7 @@
+using DocSign.Application.Interfaces.Repositories;
 using DocSign.Infrastructure.Persistence;
 using DocSign.Infrastructure.Persistence.Identity;
+using DocSign.Infrastructure.Persistence.Repositories;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +16,9 @@ public static class DependencyInjection
     {
         services.AddDbContext<Context>(options =>
                     options.UseNpgsql(configuration.BuildConnectionString()));
+
+        // Repositories
+        services.AddScoped<IDocumentRepository, DocumentRepository>();
 
         return services;
     }
