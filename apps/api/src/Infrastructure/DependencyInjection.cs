@@ -33,6 +33,12 @@ public static class DependencyInjection
         return services;
     }
 
+    public static IHealthChecksBuilder AddDbContextCheck(this IHealthChecksBuilder check, string name, string[] tags) {
+        check.AddDbContextCheck<Context>(name, tags);
+
+        return check;
+    }
+
     public static IEndpointRouteBuilder MapIdentityApi(this IEndpointRouteBuilder app)
     {
         app.MapIdentityApi<User>();

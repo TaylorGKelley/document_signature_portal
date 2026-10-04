@@ -1,4 +1,5 @@
 using DocSign.Infrastructure;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace DocSign.Api;
 
@@ -15,7 +16,10 @@ public class Program
         builder.Services.AddInfrastructure(builder.Configuration);
         builder.Services.AddIdentity();
 
-        // Add services to the container.
+        builder.Services.AddHealthChecks()
+            .AddDbContextCheck(
+                name: "database_check",
+                tags: ["ready"]);
 
         builder.Services.AddControllers();
 
@@ -31,6 +35,15 @@ public class Program
             await app.ApplyMigrations();
             app.MapOpenApi();
         }
+
+        app.MapHealthChecks("/health/live", new HealthCheckOptions
+        {
+            Predicate = _ => false // Exclude all checks and return true when app is running
+        });
+        app.MapHealthChecks("/health/ready", new HealthCheckOptions
+        {
+            Predicate = check => check.Tags.Contains("ready")
+        });
 
         app.UseHttpsRedirection();
 
