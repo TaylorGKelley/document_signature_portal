@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocumentSignaturePortal.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("[controller]"), Authorize]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries =

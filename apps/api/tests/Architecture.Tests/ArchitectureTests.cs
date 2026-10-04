@@ -2,22 +2,22 @@
 using NetArchTest.Rules;
 using Xunit;
 
-namespace DocumentSignaturePortal.Architecture.Tests;
+namespace DocSign.Architecture.Tests;
 
 public class ArchitectureTests
 {
     // Use any existing class/struct/interface from that project:
-    private static readonly Assembly DomainAssembly = typeof(DocumentSignaturePortal.Domain.Class1).Assembly;
-    private static readonly Assembly ApplicationAssembly = typeof(DocumentSignaturePortal.Application.Class1).Assembly;
+    private static readonly Assembly DomainAssembly = typeof(Domain.Common.DomainException).Assembly;
+    private static readonly Assembly ApplicationAssembly = typeof(Application.DependencyInjection).Assembly;
 
     [Fact]
     public void Domain_ShouldNotHaveDependencyOnOtherProjects()
     {
         var otherNamespaces = new[]
         {
-            "DocumentSignaturePortal.Application",
-            "DocumentSignaturePortal.Infrastructure",
-            "DocumentSignaturePortal.Api"
+            "DocSign.Application",
+            "DocSign.Infrastructure",
+            "DocSign.Api"
         };
 
         var result = Types.InAssembly(DomainAssembly)
@@ -33,7 +33,7 @@ public class ArchitectureTests
     {
         var result = Types.InAssembly(ApplicationAssembly)
             .ShouldNot()
-            .HaveDependencyOn("DocumentSignaturePortal.Infrastructure")
+            .HaveDependencyOn("DocSign.Infrastructure")
             .GetResult();
 
         Assert.True(result.IsSuccessful, "Application layer must not depend on Infrastructure.");

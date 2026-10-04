@@ -1,4 +1,4 @@
-﻿namespace DocumentSignaturePortal.Application.Tests;
+﻿namespace DocSign.Application.Tests;
 
 public class UnitTest1
 {
