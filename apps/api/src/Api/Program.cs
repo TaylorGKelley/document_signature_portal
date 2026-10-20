@@ -1,5 +1,6 @@
-using DocSign.Infrastructure;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using DocSign.Infrastructure;
+using DocSign.Api.Middleware;
 
 namespace DocSign.Api;
 
@@ -12,6 +13,10 @@ public class Program
         builder.Configuration
                 .AddEnvironmentVariables()
                 .AddCommandLine(args).Build();
+
+        // Exception Handler
+        builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+        builder.Services.AddProblemDetails();
 
         builder.Services.AddInfrastructure(builder.Configuration);
         builder.Services.AddIdentity();
@@ -26,6 +31,8 @@ public class Program
         builder.Services.AddOpenApi();
 
         var app = builder.Build();
+
+        app.UseExceptionHandler();
 
         app.MapIdentityApi();
 

@@ -34,7 +34,7 @@ public static class DependencyInjection
     }
 
     public static IHealthChecksBuilder AddDbContextCheck(this IHealthChecksBuilder check, string name, string[] tags) {
-        check.AddDbContextCheck<Context>(name, tags);
+        check.AddDbContextCheck<Context>(name, tags: tags);
 
         return check;
     }
