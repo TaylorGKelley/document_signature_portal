@@ -1,4 +1,4 @@
-namespace DocSign.Domain.Common;
+namespace DocSign.Domain.Common.Exceptions;
 
 public class DomainException : Exception
 {

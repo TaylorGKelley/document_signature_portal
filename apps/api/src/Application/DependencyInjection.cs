@@ -1,4 +1,3 @@
-using DocSign.Application.Interfaces.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DocSign.Application;

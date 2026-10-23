@@ -1,4 +1,5 @@
 using DocSign.Application.Interfaces.Repositories;
+using DocSign.Infrastructure.Configuration;
 using DocSign.Infrastructure.Persistence;
 using DocSign.Infrastructure.Persistence.Identity;
 using DocSign.Infrastructure.Persistence.Repositories;
@@ -14,11 +15,27 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        services.ApplyConfigurationOptions();
+
         services.AddDbContext<Context>(options =>
                     options.UseNpgsql(configuration.BuildConnectionString()));
 
         // Repositories
         services.AddScoped<IDocumentRepository, DocumentRepository>();
+
+        return services;
+    }
+
+    private static IServiceCollection ApplyConfigurationOptions(this IServiceCollection services)
+    {
+        services.AddOptions<StorageOptions>()
+            .BindConfiguration(StorageOptions.SectionName)
+            .ValidateDataAnnotations()
+            .ValidateOnStart();
+        services.AddOptions<RabbitMqOptions>()
+            .BindConfiguration(RabbitMqOptions.SectionName)
+            .ValidateDataAnnotations()
+            .ValidateOnStart();
 
         return services;
     }
@@ -33,7 +50,8 @@ public static class DependencyInjection
         return services;
     }
 
-    public static IHealthChecksBuilder AddDbContextCheck(this IHealthChecksBuilder check, string name, string[] tags) {
+    public static IHealthChecksBuilder AddDbContextCheck(this IHealthChecksBuilder check, string name, string[] tags)
+    {
         check.AddDbContextCheck<Context>(name, tags: tags);
 
         return check;
