@@ -77,11 +77,11 @@ public static class DependencyInjection
     {
         var builder = new NpgsqlConnectionStringBuilder
         {
-            Host = configuration["POSTGRES_HOST"] ?? "localhost",
-            Port = int.Parse(configuration["POSTGRES_PORT"] ?? "5432"),
-            Database = configuration["POSTGRES_DB"] ?? "document_signature_portal",
-            Username = configuration["POSTGRES_USER"] ?? "postgres",
-            Password = configuration["POSTGRES_PASSWORD"],
+            Host = configuration["DATABASE__POSTGRES__HOST"] ?? "localhost",
+            Port = int.Parse(configuration["DATABASE__POSTGRES__PORT"] ?? "5432"),
+            Database = configuration["DATABASE__POSTGRES__DB"] ?? "document_signature_portal",
+            Username = configuration["DATABASE__POSTGRES__USER"] ?? "postgres",
+            Password = configuration["DATABASE__POSTGRES__PASSWORD"],
             SslMode = SslMode.Prefer,
             Pooling = true,
             MaxPoolSize = 100

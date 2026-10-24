@@ -7,7 +7,7 @@ namespace DocSign.Architecture.Tests;
 public class ArchitectureTests
 {
     // Use any existing class/struct/interface from that project:
-    private static readonly Assembly DomainAssembly = typeof(Domain.Common.DomainException).Assembly;
+    private static readonly Assembly DomainAssembly = typeof(Domain.Common.Exceptions.DomainException).Assembly;
     private static readonly Assembly ApplicationAssembly = typeof(Application.DependencyInjection).Assembly;
 
     [Fact]

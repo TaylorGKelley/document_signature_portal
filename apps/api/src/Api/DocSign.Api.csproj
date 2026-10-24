@@ -9,7 +9,13 @@
     <OpenApiGenerateDocumentsOnBuild>false</OpenApiGenerateDocumentsOnBuild>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(EFProjectMetadata)' == 'false' And '$(BuildingByEf)' == 'false'">
+  <Target Name="ForceOpenApiRegen"
+          BeforeTargets="GenerateOpenApiDocuments"
+          Condition="'$(OpenApiGenerateDocumentsOnBuild)' == 'true'">
+    <Delete Files="$(OpenApiDocumentsDirectory)openapi.json" />
+  </Target>
+
+  <PropertyGroup Condition="'$(EFProjectMetadata)' != 'true' And '$(BuildingByEf)' != 'true'">
     <OpenApiGenerateDocumentsOnBuild>true</OpenApiGenerateDocumentsOnBuild>
     <OpenApiDocumentsDirectory>$(SolutionDir)</OpenApiDocumentsDirectory>
     <OpenApiGenerateDocumentsOptions>--file-name openapi</OpenApiGenerateDocumentsOptions>

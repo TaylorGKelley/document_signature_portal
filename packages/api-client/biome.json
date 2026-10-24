@@ -1,0 +1,16 @@
+{
+  "extends": "//",
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "noConsole": "on"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/src/generated/**"],
+      "linter": { "enabled": false }
+    }
+  ]
+}

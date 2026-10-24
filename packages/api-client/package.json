@@ -1,0 +1,22 @@
+{
+  "name": "@repo/api-client",
+  "private": true,
+  "description": "An API client with strongly typed requests and responses based on the generated OpenAPI schema from the .Net API.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "generate": "openapi-ts",
+    "build": "pnpm generate && tsc -b",
+    "clean": "tsc -b --clean",
+    "test": "vitest",
+    "test:watch": "vitest --watch"
+  },
+  "type": "module",
+  "dependencies": {
+    "@hey-api/client-fetch": "^0.13.1"
+  },
+  "devDependencies": {
+    "@hey-api/openapi-ts": "^0.99.0",
+    "typescript": "^5.9.3"
+  }
+}
