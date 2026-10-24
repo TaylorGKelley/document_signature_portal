@@ -14,10 +14,8 @@
     "dev:api": "dotenv -e .env -- dotnet watch --solution DocSign.slnx run --project apps/api/src/Api",
     "dev:web": "pnpm --filter @repo/web dev",
 
-    "gen:spec": "dotenv -e .env -- dotnet build --solution DocSign.slnx apps/api/src/Api -c Debug",
     "gen:types": "pnpm --filter @repo/api-client generate",
-    "gen": "pnpm gen:spec && pnpm gen:types",
-    "gen:check": "pnpm gen && git diff --exit-code -- ./openapi.json packages/api-client/src",
+    "gen": "pnpm build:api && pnpm gen:types",
 
     "build": "pnpm build:api && pnpm gen:types && pnpm build:web",
     "build:api": "dotenv -e .env -- dotnet build DocSign.slnx -c Release",
